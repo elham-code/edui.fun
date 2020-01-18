@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://edui.fun</id>
+    <title>Edui.fun |  让教学有点意思</title>
+    <updated>2020-01-18T06:22:23.685Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://edui.fun"/>
+    <link rel="self" href="https://edui.fun/atom.xml"/>
+    <subtitle>让教学有点意思</subtitle>
+    <logo>https://edui.fun/images/avatar.png</logo>
+    <icon>https://edui.fun/favicon.ico</icon>
+    <rights>All rights reserved 2020, Edui.fun |  让教学有点意思</rights>
+</feed>
