@@ -171,7 +171,13 @@ var public_vars = public_vars || {};
 		$('body').on('click', 'a[rel="go-top"]', function(ev)
 		{
 			ev.preventDefault();
-			$(window).scrollTop(0);
+
+			var obj = {pos: $(window).scrollTop()};
+
+			TweenLite.to(obj, .3, {pos: 0, ease:Power4.easeOut, onUpdate: function()
+			{
+				$(window).scrollTop(obj.pos);
+			}});
 		});
 
 
@@ -1098,6 +1104,15 @@ var public_vars = public_vars || {};
 	});
 
 
+	// Enable/Disable Resizable Event
+	var wid = 0;
+
+	$(window).resize(function() {
+		clearTimeout(wid);
+		wid = setTimeout(trigger_resizable, 200);
+	});
+
+
 })(jQuery, window);
 
 
@@ -1114,6 +1129,25 @@ function setup_sidebar_menu()
 			toggle_others = public_vars.$sidebarMenu.hasClass('toggle-others');
 
 		$items_with_subs.filter('.active').addClass('expanded');
+
+		// On larger screens collapse sidebar when the window is tablet screen
+		if(is('largescreen') && public_vars.$sidebarMenu.hasClass('collapsed') == false)
+		{
+			$(window).on('resize', function()
+			{
+				if(is('tabletscreen'))
+				{
+					public_vars.$sidebarMenu.addClass('collapsed');
+					ps_destroy();
+				}
+				else
+				if(is('largescreen'))
+				{
+					public_vars.$sidebarMenu.removeClass('collapsed');
+					ps_init();
+				}
+			});
+		}
 
 		$items_with_subs.each(function(i, el)
 		{
@@ -1399,6 +1433,9 @@ function stickFooterToBottom()
 {
 	public_vars.$mainFooter.add( public_vars.$mainContent ).add( public_vars.$sidebarMenu ).attr('style', '');
 
+	if(isxs())
+		return false;
+
 	if(public_vars.$mainFooter.hasClass('sticky'))
 	{
 		var win_height				 = jQuery(window).height(),
@@ -1444,6 +1481,8 @@ function ps_update(destroy_init)
 
 function ps_init()
 {
+	if(isxs())
+		return;
 
 	if(jQuery.isFunction(jQuery.fn.perfectScrollbar))
 	{
