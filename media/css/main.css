@@ -431,7 +431,7 @@ body {
 .sidebar-menu .main-menu li.has-sub>a:before {
     position: relative;
     display: inline-block;
-    font-family: 'icomoon' !important;;
+    font-family: 'icomoon' !important;
     content: '\f106';
     float: right;
     color: #6d747a;
