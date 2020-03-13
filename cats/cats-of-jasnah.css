@@ -4,7 +4,6 @@ body {
   font-size: 15px;
   margin: 0;
   text-align: center;
-  overflow: hidden;
 }
 
 html,
@@ -140,17 +139,17 @@ h1 {
 .forward {
   font-size: 25px;
   position: fixed;
-  top: 0;
+  top: 5px;
   width: 25px;
   cursor: pointer;
 }
 
 .back {
-  left: 0;
+  left: 10px;
 }
 
 .forward {
-  right: 0;
+  right: 10px;
 }
 
 .level-display {
